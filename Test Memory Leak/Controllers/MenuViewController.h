@@ -12,6 +12,7 @@
 @interface MenuViewController : UIViewController
 
 @property (nonatomic, weak) MemoryLeakViewController *viewController;
+@property (nonatomic, copy) void(^retainCycleBlock)(void);
 
 @end
 

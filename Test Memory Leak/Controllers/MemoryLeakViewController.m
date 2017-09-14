@@ -7,6 +7,7 @@
 //
 
 #import "MemoryLeakViewController.h"
+#import "MenuViewController.h"
 
 @interface MemoryLeakViewController ()
 
@@ -22,6 +23,36 @@
     [super viewDidLoad];
     
     self.aStr = @"A String Value";
+    
+    // After executing, this block still lives... self obviously is retained
+    // We get a warning
+//    self.selfPointingBlock = ^BOOL(NSString *str) {
+//        NSLog(@"Print out NUM - UIView Animation: %@", self.aStr);
+//
+//        return false;
+//    };
+    
+    
+    // This Block does not retain self -> dealloc will be called
+    __weak typeof(self) weakSelf = self;
+    self.weakSelfBlock = ^void(BOOL boolValue, NSNumber *num) {
+        if (weakSelf) {
+            __weak typeof(weakSelf) strongSelf = weakSelf;
+            NSLog(@"Print out NUM - UIView Animation: %@", strongSelf.aStr);
+        }
+    };
+    
+    // Create retain cycle and no warning at all. Therefore, it does not matter what stores the block...
+    // If it is being held by a strong pointer while keeping a self. A retain cycle is created
+    
+//    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+//        if ([self.navigationController.viewControllers[i] isKindOfClass:[MenuViewController class]]) {
+//            MenuViewController *view = (MenuViewController *)self.navigationController.viewControllers[i];
+//            view.retainCycleBlock = ^{
+//                NSLog(@"Print out NUM - UIView Animation: %@", self.aStr);
+//            };
+//        }
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
