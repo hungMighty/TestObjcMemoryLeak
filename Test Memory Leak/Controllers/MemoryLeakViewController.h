@@ -10,6 +10,6 @@
 
 @interface MemoryLeakViewController : UIViewController
 
-@property (nonatomic, strong) NSNumber *aNum;
+@property (nonatomic, strong) NSString *aStr;
 
 @end
