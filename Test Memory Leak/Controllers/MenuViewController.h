@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MemoryLeakViewController.h"
 
 @interface MenuViewController : UIViewController
+
+@property (nonatomic, weak) MemoryLeakViewController *viewController;
 
 @end
 

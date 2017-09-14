@@ -7,7 +7,6 @@
 //
 
 #import "MenuViewController.h"
-#import "MemoryLeakViewController.h"
 
 @interface MenuViewController () {
     
@@ -36,8 +35,8 @@
 // MARK: - Actions
 
 - (IBAction)flexibleButtonClicked:(UIButton *)sender {
-    MemoryLeakViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MemoryLeakViewController"];
-    [self.navigationController pushViewController:viewController animated:true];
+    self.viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MemoryLeakViewController"];
+    [self.navigationController pushViewController:self.viewController animated:true];
 }
 
 @end
