@@ -51,8 +51,28 @@
 //            view.retainCycleBlock = ^{
 //                NSLog(@"Print out NUM - UIView Animation: %@", self.aStr);
 //            };
+//            break;
 //        }
 //    }
+    
+    
+    
+    for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
+        if ([self.navigationController.viewControllers[i] isKindOfClass:[MenuViewController class]]) {
+            MenuViewController *view = (MenuViewController *)self.navigationController.viewControllers[i];
+            __weak typeof(self) weakSelf = self;
+            view.retainCycleBlock = ^{
+//                if (weakSelf) {
+//                    __strong typeof(weakSelf) strongSelf = weakSelf;
+//                    NSLog(@"Print out NUM - UIView Animation: %@", strongSelf.aStr);
+//                }
+                
+                // able to keep self until this block done executing
+                NSLog(@"Calling from MenuViewController's Block: %@", self.aStr);
+            };
+            break;
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
