@@ -8,6 +8,7 @@
 
 #import "MemoryLeakViewController.h"
 #import "MenuViewController.h"
+#import "WeakLinkObj.h"
 
 @interface MemoryLeakViewController ()
 
@@ -17,6 +18,9 @@
 
 - (void)dealloc {
     NSLog(@"Calling Dealloc");
+    
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)viewDidLoad {
@@ -56,27 +60,30 @@
 //    }
     
     
-    
     for (int i = 0; i < self.navigationController.viewControllers.count; i++) {
         if ([self.navigationController.viewControllers[i] isKindOfClass:[MenuViewController class]]) {
             MenuViewController *view = (MenuViewController *)self.navigationController.viewControllers[i];
             __weak typeof(self) weakSelf = self;
             view.retainCycleBlock = ^{
-//                if (weakSelf) {
-//                    __strong typeof(weakSelf) strongSelf = weakSelf;
-//                    NSLog(@"Print out NUM - UIView Animation: %@", strongSelf.aStr);
-//                }
+                if (weakSelf) {
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    NSLog(@"Print out NUM - UIView Animation: %@", strongSelf.aStr);
+                }
                 
                 // able to keep self until this block done executing
-                NSLog(@"Calling from MenuViewController's Block: %@", self.aStr);
+//                NSLog(@"Calling from MenuViewController's Block: %@", self.aStr);
             };
             break;
         }
     }
+    
+    [self createWeakTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+//    NSLog(@"Retain Count when appearing: %ld", CFGetRetainCount((__bridge CFTypeRef)(self)));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,6 +129,19 @@
         // able to retain self and wait for this block to get called
 //        NSLog(@"Print out NUM - after 0.1 second: %@", self.aStr);
     });
+    
+//    NSLog(@"Retain Count when disappearing: %ld", CFGetRetainCount((__bridge CFTypeRef)(self)));
+}
+
+- (void)createWeakTimer {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5f
+                                                  target:[WeakLinkObj initWithRealTarget:self]
+                                                selector:@selector(simpleFunc)
+                                                userInfo:nil repeats:true];
+}
+
+- (void)simpleFunc {
+    NSLog(@"Hello! This is a call from Weak Timer");
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *aStr;
 @property (nonatomic, copy) BOOL (^selfPointingBlock)(NSString *str);
 @property (nonatomic, copy) void (^weakSelfBlock)(BOOL boolValue, NSNumber *num);
+@property (nonatomic, strong) NSTimer *timer;
 
 @end

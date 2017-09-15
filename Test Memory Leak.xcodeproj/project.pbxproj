@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A03323441F694EB1001A98C3 /* MemoryLeakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03323431F694EB1001A98C3 /* MemoryLeakViewController.m */; };
+		A0342B291F6C41F40071A456 /* WeakLinkObj.m in Sources */ = {isa = PBXBuildFile; fileRef = A0342B281F6C41F40071A456 /* WeakLinkObj.m */; };
 		A04CDD031F66984E001C16F8 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A04CDD011F66984E001C16F8 /* MenuViewController.m */; };
 		A0766BDE1F6992B6002983C8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0D0A7E81F094FE40053443E /* Info.plist */; };
 		A0D0A7D91F094FE40053443E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D0A7D81F094FE40053443E /* main.m */; };
@@ -20,6 +21,8 @@
 /* Begin PBXFileReference section */
 		A03323421F694EB1001A98C3 /* MemoryLeakViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MemoryLeakViewController.h; path = Controllers/MemoryLeakViewController.h; sourceTree = "<group>"; };
 		A03323431F694EB1001A98C3 /* MemoryLeakViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MemoryLeakViewController.m; path = Controllers/MemoryLeakViewController.m; sourceTree = "<group>"; };
+		A0342B271F6C41F40071A456 /* WeakLinkObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WeakLinkObj.h; path = Utilities/WeakLinkObj.h; sourceTree = "<group>"; };
+		A0342B281F6C41F40071A456 /* WeakLinkObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WeakLinkObj.m; path = Utilities/WeakLinkObj.m; sourceTree = "<group>"; };
 		A04CDD011F66984E001C16F8 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = Controllers/MenuViewController.m; sourceTree = "<group>"; };
 		A04CDD021F66984E001C16F8 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = Controllers/MenuViewController.h; sourceTree = "<group>"; };
 		A0D0A7D41F094FE40053443E /* Test Memory Leak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Memory Leak.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0342B201F6C1B350071A456 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A0342B271F6C41F40071A456 /* WeakLinkObj.h */,
+				A0342B281F6C41F40071A456 /* WeakLinkObj.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		A04CDCF71F6697B6001C16F8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +94,7 @@
 			children = (
 				A0D0A7DA1F094FE40053443E /* AppDelegate.h */,
 				A0D0A7DB1F094FE40053443E /* AppDelegate.m */,
+				A0342B201F6C1B350071A456 /* Utilities */,
 				A04CDCF71F6697B6001C16F8 /* Controllers */,
 				A04CDCF81F6697E9001C16F8 /* Views */,
 				A0D0A7E31F094FE40053443E /* Assets.xcassets */,
@@ -177,6 +190,7 @@
 				A0D0A7DC1F094FE40053443E /* AppDelegate.m in Sources */,
 				A0D0A7D91F094FE40053443E /* main.m in Sources */,
 				A03323441F694EB1001A98C3 /* MemoryLeakViewController.m in Sources */,
+				A0342B291F6C41F40071A456 /* WeakLinkObj.m in Sources */,
 				A04CDD031F66984E001C16F8 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
