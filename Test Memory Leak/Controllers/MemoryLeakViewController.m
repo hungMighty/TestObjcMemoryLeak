@@ -2,7 +2,7 @@
 //  MemoryLeakViewController.m
 //  Objc Playground
 //
-//  Created by Ahri on 9/13/17.
+//  Created by 2B on 9/13/17.
 //  Copyright © 2017 hungMighty. All rights reserved.
 //
 
